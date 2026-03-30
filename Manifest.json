@@ -1,0 +1,8 @@
+{
+  "name": "Impromptu Pro",
+  "short_name": "Speak",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f0f2f5",
+  "theme_color": "#007bff"
+}

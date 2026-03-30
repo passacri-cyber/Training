@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impromptu Pro</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f0f2f5; }
+        #display { font-size: 3rem; font-weight: bold; text-align: center; padding: 20px; min-height: 150px; display: flex; align-items: center; }
+        button { padding: 20px 40px; font-size: 1.5rem; background: #007bff; color: white; border: none; border-radius: 12px; cursor: pointer; transition: 0.2s; }
+        button:active { transform: scale(0.95); background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div id="display">Tap to Start</div>
+    <button onclick="pickWord()">Next Word</button>
+
+    <script>
+        let words = [];
+        // Load the words from your text file
+        fetch('words.txt')
+            .then(response => response.text())
+            .then(data => {
+                words = data.split('\n').filter(word => word.trim() !== "");
+            });
+
+        function pickWord() {
+            if (words.length === 0) return;
+            const randomIndex = Math.floor(Math.random() * words.length);
+            document.getElementById('display').innerText = words[randomIndex];
+        }
+    </script>
+</body>
+</html>
